@@ -19,16 +19,14 @@ with st.sidebar:
 
 if selected=="Open Camera":
     # execfile('att.py')
-    print("Upload Images    and Open CSV files")
+    os.system("python attendence.py")
+    # print("Upload Images    and Open CSV files")
 elif selected=='Open CSV':
     df = pd.read_csv("Attendance.csv") 
     st.title("Attendance File")
     st.write(df)
 elif selected=='Upload Images':
-    # uploaded_files = st.file_uploader("Choose images file",type=["png","jpeg","jpg"], accept_multiple_files=True)
-    # for uploaded_file in uploaded_files:
-    #     bytes_data = uploaded_file.read()
-    #     st.write("filename:", uploaded_file.name)
+    #upload multiple files to images f 
     image_file = st.file_uploader("uload an image",type=['png', 'jpg', 'jpeg'])
     if image_file is not None:
         fileDetails = {"FileNamw":image_file.name,"fileType":image_file.type}
@@ -41,3 +39,5 @@ elif selected=='Upload Images':
             f.write(image_file.getbuffer())
         
         st.success("file saved")
+
+    
